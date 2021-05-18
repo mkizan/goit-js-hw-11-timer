@@ -43,7 +43,7 @@ class CountdownTimer {
   }
 }
 
-new CountdownTimer({
+const timer = new CountdownTimer({
   selector: '#timer-1',
   targetDate: new Date('Aug 24, 2021'),
 }).onStart();
