@@ -14,10 +14,10 @@ class CountdownTimer {
         return;
       }
       const { days, hours, mins, secs } = this.getTime(time);
-      this.getRefs().days.textContent = days;
-      this.getRefs().hours.textContent = hours;
-      this.getRefs().mins.textContent = mins;
-      this.getRefs().secs.textContent = secs;
+      this.getRefs().days.textContent = this.formatTime(days);
+      this.getRefs().hours.textContent = this.formatTime(hours);
+      this.getRefs().mins.textContent = this.formatTime(mins);
+      this.getRefs().secs.textContent = this.formatTime(secs);
     }, this.DELAY);
   }
   getRefs() {
@@ -41,9 +41,13 @@ class CountdownTimer {
 
     return { days, hours, mins, secs };
   }
+
+  formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+  }
 }
 
-new CountdownTimer({
+const timer = new CountdownTimer({
   selector: '#timer-1',
   targetDate: new Date('Aug 24, 2021'),
 }).onStart();
